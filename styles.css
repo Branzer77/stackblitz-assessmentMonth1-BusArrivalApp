@@ -1,57 +1,62 @@
+/* General body styles */
 body {
-  font-family: Arial, sans-serif;
-  padding: 2em;
-  background-color: #f4f4f4;
+  background: url('https://www.lta.gov.sg/content/ltagov/en/who_we_are/our_work/public_transport_system/bus/_jcr_content/par/textimage_1378593196/image.img.jpg/1740976351485.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-h1 {
-  color: #333;
+/* App box styles */
+.app-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  max-width: 900px;
+  margin: auto;
 }
 
-form {
-  margin-bottom: 1em;
+/* Animated bus icon */
+.animated-header {
+  overflow: hidden;
+  height: 60px;
+  position: relative;
 }
 
-input[type='text'] {
-  padding: 0.5em;
-  font-size: 1em;
-  width: 200px;
+.bus-icon {
+  position: absolute;
+  left: -80px;
+  animation: moveBus 5s linear infinite;
 }
 
-button {
-  padding: 0.5em 1em;
-  font-size: 1em;
-  margin-left: 0.5em;
+@keyframes moveBus {
+  0% {
+    left: -80px;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1em;
+/* Popular button hover effect */
+.popular-btn {
+  min-width: 90px;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
 }
 
-th,
-td {
-  padding: 0.75em;
-  text-align: left;
-  border: 1px solid #ccc;
-}
-
-th {
-  background-color: #007bff;
+.popular-btn:hover {
+  transform: scale(1.05);
+  background-color: #0d6efd;
   color: white;
 }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.error {
-  color: red;
-}
-
+/* Table hover effect */
 table tr:hover {
-  background-color: #f0bc11; /* Light yellow */
-  color: #237dd8; /* Bootstrap dark text color for readability */
+  background-color: #f0bc11;
+  color: #004085;
   transition: background-color 0.3s ease;
+}
+
+/* Error message styling */
+#error {
+  font-size: 1.1rem;
+  color: #d6336c;
 }

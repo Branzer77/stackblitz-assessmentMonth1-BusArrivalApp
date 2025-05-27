@@ -1,74 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Set character encoding -->
     <meta charset="UTF-8" />
-    <!-- Set responsive design viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus Arrival App</title>
 
-    <!-- Include Bootstrap 5 CSS from CDN -->
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Leaflet CSS -->
     <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-    <!-- Link to custom styles -->
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="bg-light">
-    <!-- Main app container -->
+  <body>
     <div class="container py-5">
-      <!-- App heading -->
-      <h1 class="text-center text-primary mb-4">🚌 Bus Arrival App</h1>
+      <div class="app-box shadow p-4 rounded bg-white">
+        <div class="text-center mb-4">
+          <div class="animated-header mb-2">
+            <img
+              src="bussesSG1.png"
+              alt="Bus Icon"
+              width="60"
+              class="bus-icon"
+            />
+          </div>
+          <h1 class="text-primary fw-bold">🚌 Bus Arrival App</h1>
+          <p class="text-muted">Check real-time bus arrivals by stop ID</p>
+        </div>
 
-      <!-- Bus Stop ID input form -->
-      <form id="busForm" class="d-flex justify-content-center gap-2 mb-4">
-        <!-- Input field for Bus Stop ID -->
-        <input
-          type="text"
-          id="busStopId"
-          class="form-control w-25"
-          placeholder="Enter Bus Stop ID"
-          required
-        />
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-success">Show Arrivals</button>
-      </form>
+        <div class="text-center mb-4">
+          <p class="fw-bold">Popular Bus Stops:</p>
+          <div
+            id="popularBuses"
+            class="d-flex justify-content-center flex-wrap gap-2"
+          >
+            <button class="btn btn-outline-primary popular-btn" data-id="83139">83139</button>
+            <button class="btn btn-outline-primary popular-btn" data-id="44009">44009</button>
+            <button class="btn btn-outline-primary popular-btn" data-id="55009">55009</button>
+            <button class="btn btn-outline-primary popular-btn" data-id="84009">84009</button>
+            <button class="btn btn-outline-primary popular-btn" data-id="96029">96029</button>
+          </div>
+        </div>
 
-      <!-- Error message display -->
-      <div id="error" class="text-danger text-center fw-bold mb-3"></div>
+        <form id="busForm" class="d-flex justify-content-center gap-2 mb-3">
+          <input
+            type="text"
+            id="busStopId"
+            class="form-control form-control-lg w-50"
+            placeholder="Enter Bus Stop ID"
+            required
+          />
+          <button type="submit" class="btn btn-success btn-lg">Show Arrivals</button>
+        </form>
 
-      <!-- Bus arrival results table (initially hidden) -->
-      <div class="table-responsive shadow-sm rounded">
-        <table
-          id="arrivalTable"
-          class="table table-striped table-hover table-bordered align-middle text-center"
-          style="display: none;"
-        >
-          <thead class="table-primary sticky-top">
-            <tr>
-              <th>Bus No.</th>
-              <th>Operator</th>
-              <th>Next Arrival</th>
-            </tr>
-          </thead>
-          <tbody class="table-group-divider"></tbody>
-        </table>
+        <div id="error" class="text-center fw-bold mb-3"></div>
+
+        <div class="table-responsive shadow-sm rounded mb-4">
+          <table
+            id="arrivalTable"
+            class="table table-striped table-hover table-bordered text-center"
+            style="display: none"
+          >
+            <thead class="table-primary sticky-top">
+              <tr>
+                <th>Bus No.</th>
+                <th>Operator</th>
+                <th>Next Arrival</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div id="map" style="height: 400px" class="rounded shadow"></div>
       </div>
-      <div id="map" style="height: 400px; margin-top: 20px;"></div>
-    <!-- Include Bootstrap JS Bundle -->
+    </div>
+
+    <!-- JS dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Include custom JavaScript file -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-    
-<!-- Leaflet JS -->
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-></script>
   </body>
 </html>
